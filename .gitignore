@@ -32,3 +32,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# environment variables with API keys
+.env
+
+# generated service worker in the public folder serving static assets by Next.js
+public/sw.js
