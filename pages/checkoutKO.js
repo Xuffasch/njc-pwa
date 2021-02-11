@@ -1,14 +1,13 @@
 import { useRouter } from 'next/router';
 
 export default function CheckoutOK() {
-    const router = useRouter();
+  const router = useRouter();
 
-    const returnQuery = router.query;
+  const returnQuery = router.query;
 
-    return ( 
-        <>
-            <h1>Stripe Checkout KO</h1>
-        </>
-    )
-
+  return ( 
+    <>
+      <h1>Stripe Checkout KO</h1>
+    </>
+  )
 }
