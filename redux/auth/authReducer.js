@@ -1,5 +1,4 @@
 import { createMigrate } from 'redux-persist';
-
 import storage from 'redux-persist/lib/storage';
 
 import * as actions from './authActions';

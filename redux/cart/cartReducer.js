@@ -1,7 +1,4 @@
-
 import { createMigrate } from 'redux-persist';
-import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
-
 import storage from 'redux-persist/lib/storage';
 
 import * as actions from './cartActions';

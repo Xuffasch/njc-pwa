@@ -23,7 +23,6 @@ const initialRootState = {
 function initStore(preloadedState = initialRootState) {
   return createStore(
     combinedReducers,
-    // persistReducer(cartConfig, cartReducer),
     preloadedState,
   )
 }
