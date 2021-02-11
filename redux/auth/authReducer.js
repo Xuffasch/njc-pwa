@@ -13,20 +13,24 @@ export const authInitialState = {
 export const authReducer = function(state = authInitialState, action) {
   switch (action.type) {
     case actions.LOGGEDIN: 
-      console.log("LOGGEDIN action call with :", action );
+      if (process.env.LOGS) 
+        console.log("LOGGEDIN action call with :", action );
       return {
         ...state,
         logged: true,
       }
     case actions.LOGGEDOUT:
-      console.log("user has successfully logged out ");
+      if (process.env.LOGS) 
+        console.log("user has successfully logged out ");
       return {
         ...state,
         logged: false,
       }
     default: 
-      console.log(authStoreName + ' has been called but no change has beeen made with the action : ' + action.type + 'and these data :', action);
-      console.log('current state of the store : ', state);
+      if (process.env.LOGS) {
+        console.log(authStoreName + ' has been called but no change has beeen made with the action : ' + action.type + 'and these data :', action);
+        console.log('current state of the store : ', state);
+      }  
       return {
         ...state,
       } 
@@ -37,7 +41,8 @@ const authMigration1 = null;
 
 const authMigrationConfig = {
   1: previousState => {
-    console.log('received previousState for authReducer : ', previousState);
+    if (process.env.LOGS) 
+      console.log('received previousState for authReducer : ', previousState);
     return {
       logged: undefined,
     }

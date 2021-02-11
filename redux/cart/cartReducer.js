@@ -12,19 +12,22 @@ export const cartInitialState = {
 export const cartReducer = function(state = cartInitialState, action) {
   switch (action.type) {
     case actions.ADD_TO_CART:
-      console.log('Add to cart : ', action.payload.item);
+      if (process.env.LOGS)
+        console.log('Add to cart : ', action.payload.item);
       return {
         ...state,
         content: [...state.content, action.payload.item],
       }
     case actions.REMOVE_FROM_CART:
-      console.log('Remove from cart : ', action.payload.item);
+      if (process.env.LOGS)
+        console.log('Remove from cart : ', action.payload.item);
       return {
         ...state,
         content: state.content.filter( cart_item => cart_item.id != action.payload.item),
       }
-    case actions.UPDATE_ITEM_QTY: 
-      console.log('Update qty for item : ', action.payload.item);
+    case actions.UPDATE_ITEM_QTY:
+      if (process.env.LOGS) 
+        console.log('Update qty for item : ', action.payload.item);
       return {
         ...state,
         cart: state.content.map(cart_item => {
@@ -33,8 +36,10 @@ export const cartReducer = function(state = cartInitialState, action) {
         })
       }
     default:
-      console.log(cartStoreName + ' has been called but no change has beeen made with the action : ' + action.type + 'and these data :', action);
-      console.log('current state of the store : ', state);
+      if (process.env.LOGS) {
+        console.log(cartStoreName + ' has been called but no change has beeen made with the action : ' + action.type + 'and these data :', action);
+        console.log('current state of the store : ', state);
+      }
       return {
         ...state
       }
@@ -45,7 +50,8 @@ const cartMigration1 = null;
 
 const cartMigrationConfig = {
   15: previousState => {
-    console.log("received previousState for cartReducer: ", previousState);
+    if (process.env.LOGS)
+      console.log("received previousState for cartReducer: ", previousState);
     return {
       items: undefined,
       content: [previousState.items[0] + 3],
